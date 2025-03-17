@@ -19,15 +19,15 @@ const router = createBrowserRouter([
         element: <Login></Login>
       },
       {
-        path: '/admin',
+        path: '/',
         element: <PrivateRoutes></PrivateRoutes>,
         children: [
           {
-            path: '/admin/employees',
+            path: '/employees',
             element: <Employees></Employees>
           },
           {
-            path: '/admin/addEmployees',
+            path: '/addEmployees',
             element: <AddEmployees></AddEmployees>
           }
         ]
