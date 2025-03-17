@@ -1,10 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const PrivateRoutes = () => {
+const PrivateRoutes = ({ children }) => {
     return (
-        <div>
-            <p>This is private routes!</p>
-        </div>
+        <NavLink to='/'></NavLink>
     );
 };
 

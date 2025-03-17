@@ -5,6 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Main from './Components/Main'
 import Login from './Components/Login'
 import PrivateRoutes from './Components/PrivateRoutes'
+import Employees from './Components/Employees'
+import AddEmployees from './Components/AddEmployees'
+import AuthProvider from './Provider/AuthProvider'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +17,20 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Login></Login>
+      },
+      {
+        path: '/admin',
+        element: <PrivateRoutes></PrivateRoutes>,
+        children: [
+          {
+            path: '/admin/employees',
+            element: <Employees></Employees>
+          },
+          {
+            path: '/admin/addEmployees',
+            element: <AddEmployees></AddEmployees>
+          }
+        ]
       }
     ]
   }
@@ -21,6 +38,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </StrictMode>,
 )

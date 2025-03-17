@@ -34,10 +34,10 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li>
-                            <NavLink to='/employees'>Employees</NavLink>
+                            <NavLink to='admin/employees'>Employees</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/addEmployees'>Add Employees</NavLink>
+                            <NavLink to='admin/addEmployees'>Add Employees</NavLink>
                         </li>
                     </ul>
                 </div>
