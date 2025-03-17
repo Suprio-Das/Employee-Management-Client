@@ -8,6 +8,7 @@ import PrivateRoutes from './Components/PrivateRoutes'
 import Employees from './Components/Employees'
 import AddEmployees from './Components/AddEmployees'
 import AuthProvider from './Provider/AuthProvider'
+import Profile from './Components/Profile'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
           {
             path: '/addEmployees',
             element: <AddEmployees></AddEmployees>
+          },
+          {
+            path: '/profile',
+            element: <Profile></Profile>
           }
         ]
       }
