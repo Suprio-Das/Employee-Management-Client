@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { signIn, user } = useContext(AuthContext);
@@ -23,7 +24,12 @@ const Login = () => {
                 <div className="text-center">
                     {
                         user ?
-                            <h1 className="text-5xl font-bold my-5">You're into the Systema! <br /> Try to do something C<span className='text-6xl text-orange-600'>O-O</span>L.</h1>
+                            (
+                                <div>
+                                    <h1 className="text-5xl font-bold my-5">You're into the Systema! <br /> Try to do something C<span className='text-6xl text-orange-600'>O-O</span>L.</h1>
+                                    <button className='btn btn-neutral'><Link to='/profile'>View Profile</Link></button>
+                                </div>
+                            )
                             :
                             <h1 className="text-5xl font-bold my-5">Login to the Systema!</h1>
                     }
