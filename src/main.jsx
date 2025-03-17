@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Main from './Components/Main'
 import Login from './Components/Login'
+import PrivateRoutes from './Components/PrivateRoutes'
 
 const router = createBrowserRouter([
   {
