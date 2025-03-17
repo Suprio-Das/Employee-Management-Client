@@ -11,6 +11,7 @@ const Profile = () => {
                 />
                 <h2 className="text-xl font-semibold mt-4">Suprio Das</h2>
                 <p className="text-gray-600">Junior MERN Stack Developer</p>
+                <p className="text-gray-500 mt-2">✉️ suprio.cse@gmail.com</p>
                 <p className="text-gray-500 mt-2">📞 +880 1234-567890</p>
                 <button onClick={() => document.getElementById('my_modal_1').showModal()} className="mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg cursor-pointer hover:bg-orange-600 transition">
                     Update Profile
@@ -28,6 +29,7 @@ const Profile = () => {
                             <input type="text" name="name" defaultValue='Suprio Das' className='input' />
                             <input type="email" name="email" defaultValue='suprio.cse@gmail.com' className='input' readOnly />
                             <input type="text" name="phone" defaultValue='+880 1234-567890' className='input' />
+                            <input type="text" name="photo" defaultValue='Photo URL' className='input' />
                         </form>
                         <div className="modal-action">
                             <form method="dialog">
