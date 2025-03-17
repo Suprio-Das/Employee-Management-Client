@@ -2,7 +2,7 @@ import React from 'react';
 
 const Profile = () => {
     return (
-        <div className='w-[70%] min-h-screen flex flex-col justify-center items-center mx-auto'>
+        <div className='w-[70%] min-h-[calc(100vh-65px)] flex flex-col justify-center items-center mx-auto'>
             <div className="w-sm mx-auto bg-white rounded-2xl shadow-md overflow-hidden p-6 text-center border border-orange-500">
                 <img
                     className="w-32 h-32 mx-auto rounded-full border-4 border-gray-200"
