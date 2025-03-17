@@ -23,7 +23,7 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <a className="text-xl">Employee Management</a>
+                    <a className="text-3xl title">Employee Management</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
