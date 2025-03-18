@@ -12,7 +12,7 @@ const Login = () => {
         console.log({ email, password });
         signIn(email, password)
             .then(result => {
-                console.log(result.user);
+                console.log(result.user)
             })
             .catch(error => {
                 console.log(error.message);

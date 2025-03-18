@@ -12,7 +12,7 @@ const Navbar = () => {
         setTheme(theme === "light" ? "dark" : "light");
     };
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, loggedInAdmin } = useContext(AuthContext);
     const handleLogOut = () => {
         logOut()
             .then(result => {
@@ -81,7 +81,7 @@ const Navbar = () => {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="Tailwind CSS Navbar component"
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                        src={loggedInAdmin?.photo} />
                                 </div>
                             </div>
                             <ul

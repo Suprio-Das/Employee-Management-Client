@@ -5,6 +5,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loggedInAdmin, setLoggedInAdmin] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const signIn = (email, password) => {
@@ -21,17 +22,31 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
-        })
+
+            if (currentUser?.email) {
+                fetch(`http://localhost:5000/admins/${currentUser.email}`, {
+                    method: "GET"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        setLoggedInAdmin(data);
+                    })
+                    .catch(error => console.log(error));
+            }
+        });
+
         return () => {
             unSubscribe();
         }
-    }, [])
+    }, []);
+
 
     const authInfo = {
         loading,
         signIn,
         logOut,
-        user
+        user,
+        loggedInAdmin
     }
     return (
         <AuthContext.Provider value={authInfo}>
