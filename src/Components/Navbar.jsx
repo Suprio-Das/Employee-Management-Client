@@ -12,7 +12,20 @@ const Navbar = () => {
         setTheme(theme === "light" ? "dark" : "light");
     };
 
-    const { user, logOut, loggedInAdmin } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        if (user?.email) {
+            fetch(`http://localhost:5000/admins/${user.email}`, {
+                method: "GET"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setData(data);
+                })
+        }
+    }, [user])
     const handleLogOut = () => {
         logOut()
             .then(result => {
@@ -81,7 +94,7 @@ const Navbar = () => {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="Tailwind CSS Navbar component"
-                                        src={loggedInAdmin?.photo} />
+                                        src={data?.photo} />
                                 </div>
                             </div>
                             <ul

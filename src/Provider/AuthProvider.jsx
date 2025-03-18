@@ -22,17 +22,6 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
-
-            if (currentUser?.email) {
-                fetch(`http://localhost:5000/admins/${currentUser.email}`, {
-                    method: "GET"
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        setLoggedInAdmin(data);
-                    })
-                    .catch(error => console.log(error));
-            }
         });
 
         return () => {
