@@ -25,7 +25,8 @@ const router = createBrowserRouter([
         children: [
           {
             path: '/employees',
-            element: <Employees></Employees>
+            element: <Employees></Employees>,
+            loader: () => fetch('http://localhost:5000/employees')
           },
           {
             path: '/addEmployees',
