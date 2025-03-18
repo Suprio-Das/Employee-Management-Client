@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { MdModeEdit } from "react-icons/md";
+import { MdOutlineDelete } from "react-icons/md";
 
 const Employees = () => {
     const loadedData = useLoaderData();
@@ -34,8 +36,10 @@ const Employees = () => {
                                     <td>{employee?.department}</td>
                                     <td className='flex justify-center'><img className='w-11 h-11 rounded-full' src={employee?.photo} alt="" /></td>
                                     <td>
-                                        <button className='btn bg-orange-500 text-white w-11'>Edit</button>
-                                        <button className='btn bg-red-500 text-white w-11 ml-2'>X</button>
+                                        <div className="flex gap-1">
+                                            <p className="bg-orange-500 p-2 flex items-center justify-center text-white rounded-xs cursor-pointer"><MdModeEdit /></p>
+                                            <p className="bg-red-500 p-2 flex items-center justify-center text-white rounded-xs cursor-pointer"><MdOutlineDelete /></p>
+                                        </div>
                                     </td>
                                 </tr>)
                             }
