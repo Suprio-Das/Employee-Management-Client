@@ -1,4 +1,5 @@
 import React from 'react';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const AddEmployees = () => {
     const handleAddEmployees = e => {
@@ -11,10 +12,48 @@ const AddEmployees = () => {
         const department = form.department.value;
         const photo = form.photo.value;
         const newEmployee = { name, email, phone, designation, department, photo };
-        console.log(newEmployee);
+
+        // sending data to backend
+        fetch('http://localhost:5000/employees', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newEmployee)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success('Employee inserta successfully...', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                }
+            })
     }
     return (
         <div>
+            {/* Toast Container */}
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+            />
             <h1 className='text-3xl font-extrabold text-center my-3'>Add Employees</h1>
             <div className='lg:w-[70%] mx-auto my-8 bg-base-300 lg:p-11 p-2'>
                 <form onSubmit={handleAddEmployees}>
