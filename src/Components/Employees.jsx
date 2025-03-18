@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const Employees = () => {
     const loadedData = useLoaderData();
-    console.log(loadedData);
+    const [employees, setEmployees] = useState(loadedData);
     return (
         <div>
             <h1 className='text-3xl font-extrabold text-center my-3'>Employees</h1>
