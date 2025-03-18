@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Employees = () => {
     const loadedData = useLoaderData();
@@ -51,6 +52,33 @@ const Employees = () => {
                 }
             })
     }
+    const handleDeleteEmployees = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/employees/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Employee has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+    }
     return (
         <div>
             {/* Toast Container */}
@@ -85,7 +113,7 @@ const Employees = () => {
                                     <td>
                                         <div className="flex gap-1">
                                             <p className="bg-orange-500 p-2 flex items-center justify-center text-white rounded-xs cursor-pointer" onClick={() => document.getElementById(`${employee._id}`).showModal()}><MdModeEdit /></p>
-                                            <p className="bg-red-500 p-2 flex items-center justify-center text-white rounded-xs cursor-pointer"><MdOutlineDelete /></p>
+                                            <p className="bg-red-500 p-2 flex items-center justify-center text-white rounded-xs cursor-pointer" onClick={() => handleDeleteEmployees(employee._id)}><MdOutlineDelete /></p>
                                         </div>
                                         {/* Update Employee Modal */}
                                         <dialog id={employee._id} className="modal">
