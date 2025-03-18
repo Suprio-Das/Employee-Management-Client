@@ -27,8 +27,8 @@ const Employees = () => {
                         </thead>
                         <tbody>
                             {
-                                employees.map(employee => <tr key={employee._id}>
-                                    <th>1</th>
+                                employees.map((employee, index) => <tr key={employee._id}>
+                                    <th>{index + 1}</th>
                                     <td>{employee?.name}</td>
                                     <td>{employee?.email}</td>
                                     <td>{employee?.phone}</td>
