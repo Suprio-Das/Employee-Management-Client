@@ -35,6 +35,7 @@ const AddEmployees = () => {
                         theme: "light",
                         transition: Bounce,
                     });
+                    form.reset();
                 }
             })
     }
