@@ -3,6 +3,15 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const Profile = () => {
     const { loggedInAdmin } = useContext(AuthContext);
+    const handleUpdateProfile = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const designation = form.designation.value;
+        const phone = form.phone.value;
+        const photo = form.photo.value;
+        console.log({ name, designation, phone, photo });
+    }
     return (
         <div className='w-[70%] min-h-[calc(100vh-65px)] flex flex-col justify-center items-center mx-auto'>
             <div className="w-sm mx-auto bg-white rounded-2xl shadow-md overflow-hidden p-6 text-center border border-orange-500">
@@ -27,16 +36,18 @@ const Profile = () => {
                             </div>
                             <h3 className="font-bold text-lg mb-2">Hola, Administrador!</h3>
                         </div>
-                        <form className='space-y-2'>
+                        <form onSubmit={handleUpdateProfile} className='space-y-2'>
                             <input type="text" name="name" defaultValue={loggedInAdmin?.name} className='input' />
-                            <input type="text" name="name" defaultValue={loggedInAdmin?.designation} className='input' />
+                            <input type="text" name="designation" defaultValue={loggedInAdmin?.designation} className='input' />
                             <input type="email" name="email" defaultValue={loggedInAdmin?.email} className='input' readOnly />
                             <input type="text" name="phone" defaultValue={loggedInAdmin?.phone} className='input' />
                             <input type="text" name="photo" defaultValue={loggedInAdmin?.photo} className='input' />
+                            <div>
+                                <input type="submit" className='btn w-xs btn-neutral' value="Update Profile" />
+                            </div>
                         </form>
                         <div className="modal-action">
                             <form method="dialog">
-                                {/* if there is a button in form, it will close the modal */}
                                 <button className="btn">Close</button>
                             </form>
                         </div>
