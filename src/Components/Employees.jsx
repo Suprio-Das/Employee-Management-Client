@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
-import { Bounce, toast } from "react-toastify";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const Employees = () => {
     const loadedData = useLoaderData();
@@ -17,19 +17,24 @@ const Employees = () => {
         const designation = form.designation.value;
         const department = form.department.value;
         const photo = form.photo.value;
-        const newEmployee = { id, name, email, phone, designation, department, photo };
+        const updatedEmployee = { id, name, email, phone, designation, department, photo };
 
-        sending data to backend
-        fetch(`http://localhost:5000/employees/${empl}`, {
+        // sending data to backend
+        fetch(`http://localhost:5000/employees/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(newEmployee)
+            body: JSON.stringify(updatedEmployee)
         })
             .then(res => res.json())
             .then(data => {
-                if (data.insertedId) {
+                if (data.modifiedCount > 0) {
+                    setEmployees(prevEmployees =>
+                        prevEmployees.map(emp =>
+                            emp._id === id ? { ...emp, ...updatedEmployee } : emp
+                        )
+                    );
                     toast.success('Employee updated successfully...', {
                         position: "top-right",
                         autoClose: 5000,
@@ -41,14 +46,15 @@ const Employees = () => {
                         theme: "light",
                         transition: Bounce,
                     });
-                    form.reset();
                 }
             })
     }
     return (
         <div>
+            {/* Toast Container */}
+            <ToastContainer></ToastContainer>
             <h1 className='text-3xl font-extrabold text-center my-3'>Employees</h1>
-            <div className='w-[70%] mx-auto'>
+            <div className='w-[80%] mx-auto'>
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
@@ -115,7 +121,7 @@ const Employees = () => {
                                                             <input type="text" className="input w-full" name='photo' defaultValue={employee?.photo} placeholder="Enter Employee Prfile URL" />
                                                         </fieldset>
                                                     </div>
-                                                    <input type="submit" className='btn btn-neutral w-full mt-5' value="Add Employee" />
+                                                    <input type="submit" className='btn btn-neutral w-full mt-5' value="Update Employee" />
                                                 </form>
                                                 <div className="modal-action">
                                                     <form method="dialog">
