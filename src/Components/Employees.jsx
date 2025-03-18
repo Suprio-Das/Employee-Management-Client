@@ -74,6 +74,9 @@ const Employees = () => {
                                 text: "Employee has been deleted.",
                                 icon: "success"
                             });
+
+                            const remaining = employees.filter(emp => emp._id !== id);
+                            setEmployees(remaining);
                         }
                     })
             }
