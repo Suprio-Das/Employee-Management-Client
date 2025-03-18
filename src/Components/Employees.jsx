@@ -37,9 +37,20 @@ const Employees = () => {
                                     <td className='flex justify-center'><img className='w-11 h-11 rounded-full' src={employee?.photo} alt="" /></td>
                                     <td>
                                         <div className="flex gap-1">
-                                            <p className="bg-orange-500 p-2 flex items-center justify-center text-white rounded-xs cursor-pointer"><MdModeEdit /></p>
+                                            <p className="bg-orange-500 p-2 flex items-center justify-center text-white rounded-xs cursor-pointer" onClick={() => document.getElementById(`${employee._id}`).showModal()}><MdModeEdit /></p>
                                             <p className="bg-red-500 p-2 flex items-center justify-center text-white rounded-xs cursor-pointer"><MdOutlineDelete /></p>
                                         </div>
+                                        {/* Update Employee Modal */}
+                                        <dialog id={employee._id} className="modal">
+                                            <div className="modal-box">
+                                                <h3 className="font-bold text-lg">Hello, {employee.name}</h3>
+                                                <div className="modal-action">
+                                                    <form method="dialog">
+                                                        <button className="btn">Close</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </dialog>
                                     </td>
                                 </tr>)
                             }
