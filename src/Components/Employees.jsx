@@ -2,10 +2,48 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
+import { Bounce, toast } from "react-toastify";
 
 const Employees = () => {
     const loadedData = useLoaderData();
     const [employees, setEmployees] = useState(loadedData);
+    const handleUpdateEmployees = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const phone = form.phone.value;
+        const designation = form.designation.value;
+        const department = form.department.value;
+        const photo = form.photo.value;
+        const newEmployee = { name, email, phone, designation, department, photo };
+
+        // sending data to backend
+        fetch('http://localhost:5000/employees', {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newEmployee)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success('Employee updated successfully...', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                    form.reset();
+                }
+            })
+    }
     return (
         <div>
             <h1 className='text-3xl font-extrabold text-center my-3'>Employees</h1>
@@ -43,7 +81,40 @@ const Employees = () => {
                                         {/* Update Employee Modal */}
                                         <dialog id={employee._id} className="modal">
                                             <div className="modal-box">
-                                                <h3 className="font-bold text-lg">Hello, {employee.name}</h3>
+                                                <h3 className="font-bold text-lg">Update Employee Profile</h3>
+                                                <form onSubmit={handleUpdateEmployees}>
+                                                    <div className='lg:flex gap-3'>
+                                                        <fieldset className="fieldset w-full">
+                                                            <legend className="fieldset-legend">Name</legend>
+                                                            <input type="text" className="input w-full" name='name' defaultValue={employee?.name} placeholder="Enter Employee Name" />
+                                                        </fieldset>
+                                                        <fieldset className="fieldset w-full">
+                                                            <legend className="fieldset-legend">Email</legend>
+                                                            <input type="text" className="input w-full" name='email' defaultValue={employee?.email} placeholder="Enter Employee Email" readOnly />
+                                                        </fieldset>
+                                                    </div>
+                                                    <div className='lg:flex gap-3'>
+                                                        <fieldset className="fieldset w-full">
+                                                            <legend className="fieldset-legend">Phone</legend>
+                                                            <input type="text" className="input w-full" name='phone' defaultValue={employee?.phone} placeholder="Enter Employee Phone" />
+                                                        </fieldset>
+                                                        <fieldset className="fieldset w-full">
+                                                            <legend className="fieldset-legend">Designation</legend>
+                                                            <input type="text" className="input w-full" name='designation' defaultValue={employee?.designation} placeholder="Enter Employee Designation" />
+                                                        </fieldset>
+                                                    </div>
+                                                    <div className='lg:flex gap-3'>
+                                                        <fieldset className="fieldset w-full">
+                                                            <legend className="fieldset-legend">Department</legend>
+                                                            <input type="text" className="input w-full" name='department' defaultValue={employee?.department} placeholder="Enter Employee Department" />
+                                                        </fieldset>
+                                                        <fieldset className="fieldset w-full">
+                                                            <legend className="fieldset-legend">Profile URL</legend>
+                                                            <input type="text" className="input w-full" name='photo' defaultValue={employee?.photo} placeholder="Enter Employee Prfile URL" />
+                                                        </fieldset>
+                                                    </div>
+                                                    <input type="submit" className='btn btn-neutral w-full mt-5' value="Add Employee" />
+                                                </form>
                                                 <div className="modal-action">
                                                     <form method="dialog">
                                                         <button className="btn">Close</button>
