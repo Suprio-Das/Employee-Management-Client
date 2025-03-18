@@ -10,16 +10,17 @@ const Employees = () => {
     const handleUpdateEmployees = e => {
         e.preventDefault();
         const form = e.target;
+        const id = form.id.value;
         const name = form.name.value;
         const email = form.email.value;
         const phone = form.phone.value;
         const designation = form.designation.value;
         const department = form.department.value;
         const photo = form.photo.value;
-        const newEmployee = { name, email, phone, designation, department, photo };
+        const newEmployee = { id, name, email, phone, designation, department, photo };
 
-        // sending data to backend
-        fetch('http://localhost:5000/employees', {
+        sending data to backend
+        fetch(`http://localhost:5000/employees/${empl}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -84,6 +85,7 @@ const Employees = () => {
                                                 <h3 className="font-bold text-lg">Update Employee Profile</h3>
                                                 <form onSubmit={handleUpdateEmployees}>
                                                     <div className='lg:flex gap-3'>
+                                                        <input type="text" defaultValue={employee._id} name="id" className="hidden" />
                                                         <fieldset className="fieldset w-full">
                                                             <legend className="fieldset-legend">Name</legend>
                                                             <input type="text" className="input w-full" name='name' defaultValue={employee?.name} placeholder="Enter Employee Name" />
