@@ -24,45 +24,21 @@ const Employees = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>1</th>
-                                <td>Cy Ganderton</td>
-                                <td>cy@gmail.com</td>
-                                <td>01111111111</td>
-                                <td>Developer</td>
-                                <td>XYZ</td>
-                                <td className='flex justify-center'><img className='w-11 h-11 rounded-full' src="https://i.ibb.co.com/BmXkp7h/my-profile-linkedin.png" alt="" /></td>
-                                <td>
-                                    <button className='btn bg-orange-500 text-white w-11'>Edit</button>
-                                    <button className='btn bg-red-500 text-white w-11 ml-2'>X</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <td>Cy Ganderton</td>
-                                <td>cy@gmail.com</td>
-                                <td>01111111111</td>
-                                <td>Developer</td>
-                                <td>XYZ</td>
-                                <td className='flex justify-center'><img className='w-11 h-11 rounded-full' src="https://i.ibb.co.com/BmXkp7h/my-profile-linkedin.png" alt="" /></td>
-                                <td>
-                                    <button className='btn bg-orange-500 text-white w-11'>Edit</button>
-                                    <button className='btn bg-red-500 text-white w-11 ml-2'>X</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <td>Cy Ganderton</td>
-                                <td>cy@gmail.com</td>
-                                <td>01111111111</td>
-                                <td>Developer</td>
-                                <td>XYZ</td>
-                                <td className='flex justify-center'><img className='w-11 h-11 rounded-full' src="https://i.ibb.co.com/BmXkp7h/my-profile-linkedin.png" alt="" /></td>
-                                <td>
-                                    <button className='btn bg-orange-500 text-white w-11'>Edit</button>
-                                    <button className='btn bg-red-500 text-white w-11 ml-2'>X</button>
-                                </td>
-                            </tr>
+                            {
+                                employees.map(employee => <tr key={employee._id}>
+                                    <th>1</th>
+                                    <td>{employee?.name}</td>
+                                    <td>{employee?.email}</td>
+                                    <td>{employee?.phone}</td>
+                                    <td>{employee?.designation}</td>
+                                    <td>{employee?.department}</td>
+                                    <td className='flex justify-center'><img className='w-11 h-11 rounded-full' src={employee?.photo} alt="" /></td>
+                                    <td>
+                                        <button className='btn bg-orange-500 text-white w-11'>Edit</button>
+                                        <button className='btn bg-red-500 text-white w-11 ml-2'>X</button>
+                                    </td>
+                                </tr>)
+                            }
                         </tbody>
                     </table>
                 </div>
