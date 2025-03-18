@@ -46,6 +46,8 @@ const Employees = () => {
                         theme: "light",
                         transition: Bounce,
                     });
+
+                    document.getElementById(`${id}`).close();
                 }
             })
     }
