@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Profile = () => {
+    const { loggedInAdmin } = useContext(AuthContext);
     return (
         <div className='w-[70%] min-h-[calc(100vh-65px)] flex flex-col justify-center items-center mx-auto'>
             <div className="w-sm mx-auto bg-white rounded-2xl shadow-md overflow-hidden p-6 text-center border border-orange-500">
@@ -9,10 +11,10 @@ const Profile = () => {
                     src="https://i.ibb.co.com/BmXkp7h/my-profile-linkedin.png"
                     alt="Profile"
                 />
-                <h2 className="text-xl font-semibold mt-4">Suprio Das</h2>
-                <p className="text-gray-600">Junior MERN Stack Developer</p>
-                <p className="text-gray-500 mt-2">✉️ suprio.cse@gmail.com</p>
-                <p className="text-gray-500 mt-2">📞 +880 1234-567890</p>
+                <h2 className="text-xl font-semibold mt-4">{loggedInAdmin?.name}</h2>
+                <p className="text-gray-600">{loggedInAdmin?.designation}</p>
+                <p className="text-gray-500 mt-2">✉️ {loggedInAdmin?.email}</p>
+                <p className="text-gray-500 mt-2">📞 {loggedInAdmin?.phone}</p>
                 <button onClick={() => document.getElementById('my_modal_1').showModal()} className="mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg cursor-pointer hover:bg-orange-600 transition">
                     Update Profile
                 </button>
@@ -26,10 +28,11 @@ const Profile = () => {
                             <h3 className="font-bold text-lg mb-2">Hola, Administrador!</h3>
                         </div>
                         <form className='space-y-2'>
-                            <input type="text" name="name" defaultValue='Suprio Das' className='input' />
-                            <input type="email" name="email" defaultValue='suprio.cse@gmail.com' className='input' readOnly />
-                            <input type="text" name="phone" defaultValue='+880 1234-567890' className='input' />
-                            <input type="text" name="photo" defaultValue='Photo URL' className='input' />
+                            <input type="text" name="name" defaultValue={loggedInAdmin?.name} className='input' />
+                            <input type="text" name="name" defaultValue={loggedInAdmin?.designation} className='input' />
+                            <input type="email" name="email" defaultValue={loggedInAdmin?.email} className='input' readOnly />
+                            <input type="text" name="phone" defaultValue={loggedInAdmin?.phone} className='input' />
+                            <input type="text" name="photo" defaultValue={loggedInAdmin?.photo} className='input' />
                         </form>
                         <div className="modal-action">
                             <form method="dialog">
