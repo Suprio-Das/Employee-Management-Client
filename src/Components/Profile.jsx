@@ -60,7 +60,7 @@ const Profile = () => {
         }
     }
     return (
-        <div className='w-[70%] min-h-[calc(100vh-65px)] flex flex-col justify-center items-center mx-auto'>
+        <div className='w-[70%] lg:min-h-[calc(100vh-120px)] flex flex-col justify-center items-center mx-auto'>
             {
                 loading ? (<Loader></Loader>) : (
                     <div className="w-sm mx-auto bg-white rounded-2xl shadow-md overflow-hidden p-6 text-center border border-orange-500">
