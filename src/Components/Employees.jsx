@@ -131,7 +131,7 @@ const Employees = () => {
                                                         </fieldset>
                                                         <fieldset className="fieldset w-full">
                                                             <legend className="fieldset-legend">Email</legend>
-                                                            <input type="text" className="input w-full" name='email' defaultValue={employee?.email} placeholder="Enter Employee Email" readOnly />
+                                                            <input type="text" className="input w-full" name='email' defaultValue={employee?.email} placeholder="Enter Employee Email" />
                                                         </fieldset>
                                                     </div>
                                                     <div className='lg:flex gap-3'>
