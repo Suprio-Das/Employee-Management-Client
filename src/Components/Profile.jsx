@@ -61,7 +61,7 @@ const Profile = () => {
     return (
         <div className='w-[70%] lg:min-h-[calc(100vh-120px)] flex flex-col justify-center items-center mx-auto'>
             {
-                loading ? (<Loader></Loader>) : (
+                data === null ? (<Loader></Loader>) : (
                     <div className="w-sm mx-auto bg-white rounded-2xl shadow-md overflow-hidden p-6 text-center border border-orange-500">
                         <img
                             className="w-32 h-32 mx-auto rounded-full border-4 border-gray-200"
