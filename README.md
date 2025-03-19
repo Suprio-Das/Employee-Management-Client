@@ -32,6 +32,8 @@ Employee Management System is a MERN based project with basic CRUD operations an
 
 **Live Link:** <a href="https://employee-management-systema.web.app/" target="_blank">Employee Management</a>
 <br>
+**Server Link:** <a href="https://github.com/Suprio-Das/Employee-Management-Server" target="_blank">Employee Management Server</a>
+<br>
 **_Login Credential_:** <br>
 Email: `suprio.cse@gmail.com`
 <br>
