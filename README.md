@@ -28,6 +28,8 @@ Employee Management System is a MERN based project with basic CRUD operations an
 
 ### Additional
 1. UptimeRobot - Used to ping the server after a periodic time
+2. Vercel - For Server Deployment
+3. Firebase - For Authentication & Client Deployment
 <br><br>
 
 **Live Link:** <a href="https://employee-management-systema.web.app/" target="_blank">Employee Management</a>
