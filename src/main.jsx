@@ -26,7 +26,7 @@ const router = createBrowserRouter([
           {
             path: '/employees',
             element: <Employees></Employees>,
-            loader: () => fetch('http://localhost:5000/employees')
+            loader: () => fetch('https://employee-management-server-ecru-ten.vercel.app/employees')
           },
           {
             path: '/addEmployees',

@@ -17,7 +17,7 @@ const Navbar = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/admins/${user.email}`, {
+            fetch(`https://employee-management-server-ecru-ten.vercel.app/admins/${user.email}`, {
                 method: "GET"
             })
                 .then(res => res.json())
@@ -28,12 +28,6 @@ const Navbar = () => {
     }, [user])
     const handleLogOut = () => {
         logOut()
-            .then(result => {
-                console.log("Logged out successfully");
-            })
-            .catch(error => {
-                console.log(error.message);
-            })
     }
     return (
         <div>

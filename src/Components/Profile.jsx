@@ -9,7 +9,7 @@ const Profile = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/admins/${user.email}`, {
+            fetch(`https://employee-management-server-ecru-ten.vercel.app/admins/${user.email}`, {
                 method: "GET"
             })
                 .then(res => res.json())
@@ -27,11 +27,10 @@ const Profile = () => {
         const phone = form.phone.value;
         const photo = form.photo.value;
         const updatedData = { name, designation, phone, photo };
-        console.log(updatedData);
 
         // sending data to backend
         if (data?.email) {
-            fetch(`http://localhost:5000/admins/${data.email}`, {
+            fetch(`https://employee-management-server-ecru-ten.vercel.app/admins/${data.email}`, {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json"
