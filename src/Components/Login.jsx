@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
     const { signIn, user } = useContext(AuthContext);
@@ -12,14 +13,39 @@ const Login = () => {
         console.log({ email, password });
         signIn(email, password)
             .then(result => {
-                console.log(result.user)
+                if (result.user) {
+                    toast.success('Logged-in to the Systema successfully!', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                }
             })
             .catch(error => {
-                console.log(error.message);
+                if (error.message) {
+                    toast.error('Are you sure you are the Administrador?', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                }
             })
     }
     return (
         <div>
+            <ToastContainer></ToastContainer>
             <div className="bg-base-200 min-h-[calc(100vh-65px)] flex flex-col justify-center items-center">
                 <div className="text-center">
                     {
