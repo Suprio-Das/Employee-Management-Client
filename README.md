@@ -36,6 +36,7 @@ Employee Management System is a MERN based project with basic CRUD operations an
 <br>
 **Server Link:** <a href="https://github.com/Suprio-Das/Employee-Management-Server" target="_blank">Employee Management Server</a>
 <br>
+**Note:** If the site is not working properly, it's not my fault. I have deployed the backend server in Vercel free tier. It goes to sleep after certain inacitvity. If you're interested to the visit the live link, please drop a mail to this `suprio.cse@gmail.com` <br>
 **_Login Credential_:** <br>
 Email: `suprio.cse@gmail.com`
 <br>
