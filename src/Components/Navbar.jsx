@@ -17,7 +17,7 @@ const Navbar = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://employee-management-server-ecru-ten.vercel.app/admins/${user.email}`, {
+            fetch(`https://employee-management-server-8qs9.onrender.com/admins/${user.email}`, {
                 method: "GET"
             })
                 .then(res => res.json())

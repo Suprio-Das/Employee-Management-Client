@@ -14,7 +14,7 @@ const AddEmployees = () => {
         const newEmployee = { name, email, phone, designation, department, photo };
 
         // sending data to backend
-        fetch('https://employee-management-server-ecru-ten.vercel.app/employees', {
+        fetch('https://employee-management-server-8qs9.onrender.com/employees', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

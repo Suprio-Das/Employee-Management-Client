@@ -9,7 +9,7 @@ const Profile = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://employee-management-server-ecru-ten.vercel.app/admins/${user.email}`, {
+            fetch(`https://employee-management-server-8qs9.onrender.com/admins/${user.email}`, {
                 method: "GET"
             })
                 .then(res => res.json())
@@ -30,7 +30,7 @@ const Profile = () => {
 
         // sending data to backend
         if (data?.email) {
-            fetch(`https://employee-management-server-ecru-ten.vercel.app/admins/${data.email}`, {
+            fetch(`https://employee-management-server-8qs9.onrender.com/admins/${data.email}`, {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json"

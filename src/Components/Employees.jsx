@@ -21,7 +21,7 @@ const Employees = () => {
         const updatedEmployee = { id, name, email, phone, designation, department, photo };
 
         // sending data to backend
-        fetch(`https://employee-management-server-ecru-ten.vercel.app/employees/${id}`, {
+        fetch(`https://employee-management-server-8qs9.onrender.com/employees/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -63,7 +63,7 @@ const Employees = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://employee-management-server-ecru-ten.vercel.app/employees/${id}`, {
+                fetch(`https://employee-management-server-8qs9.onrender.com/employees/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
